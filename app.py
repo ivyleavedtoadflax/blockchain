@@ -121,7 +121,7 @@ class Blockchain(object):
         parsed_url = urlparse(address)
         self.nodes.add(parsed_url.netloc)
 
-    def valid_chain(self, chaiin):
+    def valid_chain(self, chain):
         """
         Determine if a given blockchain is valid
 
