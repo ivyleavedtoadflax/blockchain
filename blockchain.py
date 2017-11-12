@@ -124,7 +124,7 @@ def new_transaction():
     values = request.get_json()
 
     # Check that the required fields are in the POST'ed data
-    requried = ['sender', 'recipient', 'amount']
+    required = ['sender', 'recipient', 'amount']
     if not all(k in values for k in required):
         return 'Missing values', 400
 
