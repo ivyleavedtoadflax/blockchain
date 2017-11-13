@@ -91,24 +91,22 @@ class Blockchain(object):
         """
 
         proof = 0
-        previous_hash = self.chain[0]['previous_hash']
-        while self.valid_proof(last_proof, proof, previous_hash) is False:
+        while self.valid_proof(last_proof, proof) is False:
             proof += 1
 
         return proof
 
     @staticmethod
-    def valid_proof(last_proof, proof, previous_hash):
+    def valid_proof(last_proof, proof):
         """
-        Validates the Proof: Does hash(last_proof, proof, previous_hash) contain 4 leading zeroes?
+        Validates the Proof: Does hash(last_proof, proof) contain 4 leading zeroes?
 
         :param last_proof: <int> Previous Proof
         :param proof: <int> Current proof
-        :param previous_hash: <str> Hash of the previous block
         :return: <bool> True if correct, False if not
         """
 
-        guess = f'{last_proof}{proof}{previous_hash}'.encode()
+        guess = f'{last_proof}{proof}'.encode()
         guess_hash = hashlib.sha384(guess).hexdigest()
         return guess_hash[:4] == "0000"
 
