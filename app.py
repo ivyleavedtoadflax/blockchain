@@ -5,6 +5,7 @@ https://hackernoon.com/learn-blockchains-by-building-one-117428612f46
 
 import hashlib
 import json
+import requests
 
 from time import time
 from uuid import uuid4
@@ -258,8 +259,8 @@ def full_chain():
 def register_nodes():
     values = request.get_json()
 
-    nodes - values.get('nodes')
-    if node is None:
+    nodes = values.get('nodes')
+    if nodes is None:
         return "Error: Please supply a valid list of nodes", 400
 
     for node in nodes:
